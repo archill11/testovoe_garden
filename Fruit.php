@@ -1,5 +1,9 @@
 <?php
 
 abstract class Fruit {
-    public String $fruitName;
+
+    public $fruitName;
+
+    public $weight;
+    
 }
