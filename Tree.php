@@ -2,9 +2,9 @@
 
 abstract class Tree {
 
-    public $id;
+    private $id;
 
-    public $productType;
+    private $productType;
     
     abstract public function returnProducts();
 

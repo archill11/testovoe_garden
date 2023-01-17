@@ -24,15 +24,11 @@ class Garden {
     public function takeAllProducts() { // метод собирает плоды со всех деревьев, добавленных в сад;
         $fruitsMap = [];
 
-        // echo 555;
-        // file_put_contents('testCount.txt', var_export( count($this->gardenTrees) ), true);
-
         for ($i = 0; $i < count($this->gardenTrees); $i++) { 
-            $list = $this->gardenTrees;
+            $list = $this->gardenTrees; // список всех деревьев в саду
             $tree = $list[$i];
             
             $products = $tree->returnProducts();
-            // file_put_contents('testList.txt', var_export($list, true));
 
             $type = $tree->__toString();
             if (array_key_exists($type , $fruitsMap)) { // если ключ с именем объекта уже есть в мапе , добавляем к знаеченям все собранные продукты 
@@ -47,7 +43,13 @@ class Garden {
         }
 
         foreach ($fruitsMap as $treenName => $productsArr) { // вывожу в кончоль количество плодов для каждого дерева
-            echo "from {$treenName}s : -> " .  count($productsArr) . " fruits\n\n";
+            $totalWeight = 0;
+
+            foreach ($productsArr as $product) { //считаю общий вес фруктов одного вида
+                $totalWeight += $product->getWeight();
+            }
+
+            echo "from {$treenName}s : -> " .  count($productsArr) . " fruits with total weight: {$totalWeight}\n\n";
         }
 
         file_put_contents('FruitsMap.txt', var_export($fruitsMap, true)); // мапа со всеми плодами 

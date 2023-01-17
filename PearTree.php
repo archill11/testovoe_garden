@@ -5,9 +5,12 @@ require_once __DIR__ . "/Tree.php";
 
 class PearTree extends Tree {
 
-    public $productType = "pear"; //new Pear();
+    private $productType;
 
     public function returnProducts() {
+
+        $this->productType = new Pear();
+
         $count = mt_rand(0, 2); // количесво фруктов которое вернет дерево 
 
         $productList = array();

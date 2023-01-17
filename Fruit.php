@@ -2,8 +2,8 @@
 
 abstract class Fruit {
 
-    public $fruitName;
+    private $fruitName;
 
-    public $weight;
+    private $weight;
     
 }

@@ -4,12 +4,16 @@ require_once __DIR__ . "/Fruit.php";
 
 class Pear extends Fruit {
 
-    public $fruitName = "pear";
+    private $fruitName = "pear";
 
-    public $weight;
+    private $weight;
 
     public function __construct() {
         $this->weight = mt_rand(130, 170);
+    }
+
+    public function getWeight() {
+        return $this->weight;
     }
     
 }
