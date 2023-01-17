@@ -1,4 +1,5 @@
 <?php
+namespace Garden;
 
 require_once __DIR__ . "/Garden.php";
 

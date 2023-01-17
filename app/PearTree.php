@@ -1,29 +1,39 @@
 <?php
+namespace Garden;
 
 require_once __DIR__ . "/Pear.php";
 require_once __DIR__ . "/Tree.php";
 
 class PearTree extends Tree {
 
-    private $productType;
+    private Pear $productType;
 
-    public function returnProducts() {
-
+    public function __construct()
+    {
         $this->productType = new Pear();
+    }
 
-        $count = mt_rand(0, 2); // количесво фруктов которое вернет дерево 
+    public function returnProducts(): array
+    {
+        $count = mt_rand(0, 20); // количесво фруктов которое вернет дерево 
 
         $productList = array();
 
-        for ($i = 0; $i <= $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $productList[$i] = new Pear();
         }
 
         return $productList;
     }
 
-    public function __toString() { // перезаписываю toString для того чтобы можно было положить класс в качестве ключа мапы
+    public function __toString() // перезаписываю toString для того чтобы можно было положить класс в качестве ключа мапы
+    {
         return "PearTree";
+    }
+
+    public function getProductType(): Pear
+    {
+        return $this->productType;
     }
 
 }

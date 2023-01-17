@@ -1,9 +1,10 @@
 <?php
+namespace Garden;
 
 abstract class Fruit {
 
-    private $fruitName;
+    private string $fruitName;
 
-    private $weight;
+    private int $weight;
     
 }

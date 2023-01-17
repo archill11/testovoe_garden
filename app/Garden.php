@@ -1,27 +1,31 @@
 <?php
+namespace Garden;
 
 require_once __DIR__ . "/AppleTree.php";
 require_once __DIR__ . "/PearTree.php";
 
 class Garden {
 
-    private $gardenTrees = [];
+    private array $gardenTrees = [];
 
-    public function __construct() {
-        for ($i = 0; $i <= 2; $i++) { // инициализируем 10 яблонь 
+    public function __construct()
+    {
+        for ($i = 0; $i < 10; $i++) { // инициализируем 10 яблонь 
             $this->addTree( new AppleTree() );
         }
 
-        for ($i = 0; $i <= 3; $i++) { // инициализируем 15 груш 
+        for ($i = 0; $i < 15; $i++) { // инициализируем 15 груш 
             $this->addTree( new PearTree() );
         }
     }
 
-    public function addTree($tree) { // метод добавляет деревья в сад;
+    public function addTree(Tree $tree): void // метод добавляет деревья в сад;
+    {
         $this->gardenTrees[] = $tree;
     }
 
-    public function takeAllProducts() { // метод собирает плоды со всех деревьев, добавленных в сад;
+    public function takeAllProducts(): void // метод собирает плоды со всех деревьев, добавленных в сад;
+    {
         $fruitsMap = [];
 
         for ($i = 0; $i < count($this->gardenTrees); $i++) { 
@@ -53,6 +57,11 @@ class Garden {
         }
 
         file_put_contents('FruitsMap.txt', var_export($fruitsMap, true)); // мапа со всеми плодами 
+    }
+
+    public function getGardenTrees(): array
+    {
+        return $this->gardenTrees;
     }
 
 
